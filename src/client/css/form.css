@@ -1,0 +1,14 @@
+body, html {
+    height: 100%;
+}
+.titleF {
+    color: #0c3066
+}
+.bgF {
+    background-image: url("../images/User.png");
+    height: 80vh;
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-size: cover;
+    z-index: -1;
+}
