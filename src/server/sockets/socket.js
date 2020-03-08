@@ -8,8 +8,11 @@ conn.desconectar = (cliente, io)=>{
 
 conn.test = (cliente, io)=>{
     cliente.on('testForm', (obj, callback)=>{
-        console.log(obj.name);
-        console.log(obj.age);
+        io.emit('testForm',obj);
+        callback({
+            ok:true,
+            message:'Respuesta desde node'
+        })
     })
 }
 
