@@ -9,13 +9,22 @@ const mongoose = require('mongoose');
 const userRouter = require('../server/routes/userRoutes');
 const commentsRouter = require('../server/routes/commentsRoutes');
 
+let mongoDB = 'mongodb://localhost:27017/Find-Eat';
+
 const app = express();
 app.use(cors());
 // Mongoose conection
-mongoose.connect('mongodb://localhost:27017/Find-Eat', (err) => {
-  if (err) throw err;
-  console.log('Successfully conected');
-});
+mongoose.connect(
+  mongoDB,
+  {useNewUrlParser: true, useCreateIndex: true},
+  (err)=>{
+      if(err){
+          console.log(err)
+      }else{
+          console.log('Success conected')
+      }
+  }
+);
 // view engine setup
 app.use(logger('dev'));
 app.use(express.json());

@@ -7,6 +7,7 @@
 const debug = require('debug')('find-eat:server');
 const http = require('http');
 const app = require('../app');
+const socket = require('../sockets/socket');
 
 /**
  * Get port from environment and store in Express.
@@ -19,13 +20,25 @@ app.set('port', port);
  * Create HTTP server.
  */
 
+/**Socket.io configuration */
 const server = http.createServer(app);
+const io = require('socket.io')(server);
+
+io.on('connection', (cliente)=>{
+  console.log('Cliente conectado');
+  socket.desconectar(cliente, io);
+  socket.test(cliente, io);
+})
+
+
 
 /**
  * Listen on provided port, on all network interfaces.
  */
 
-server.listen(port);
+server.listen(port, ()=>{
+  console.log('Server listen on port', port);
+});
 server.on('error', onError);
 server.on('listening', onListening);
 
