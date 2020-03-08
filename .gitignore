@@ -3,12 +3,3 @@ node_modules
 dist
 *.log
 yarn.lock
-src/client/components/learn/users\.js
-
-src/client/components/errors/index\.js
-
-src/client/components/errors/404\.js
-
-src/client/components/App\.js
-
-src/client/components/learn/contact\.js
